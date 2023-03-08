@@ -41,7 +41,6 @@ class GpxRouteMap extends StatefulWidget {
 class _GpxRouteMapState extends State<GpxRouteMap> {
   @override
   void initState() {
-    print('hello world');
   }
 
   Widget build(BuildContext context) {
