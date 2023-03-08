@@ -1,0 +1,99 @@
+// Automatic FlutterFlow imports
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/widgets/index.dart'; // Imports other custom widgets
+import '/custom_code/actions/index.dart'; // Imports custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom widget code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE
+
+// Set your widget name, define your parameter, and then add the
+// boilerplate code using the button on the right!
+
+//import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+//import 'package:google_maps_flutter_ios/google_maps_flutter_ios.dart';
+//import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+//import 'package:google_maps_flutter_web/google_maps_flutter_web.dart';
+//import 'package:latlong2/latlong.dart' as mylatlong;
+import 'package:google_maps_flutter/google_maps_flutter.dart' hide LatLng;
+import 'package:google_maps_flutter/google_maps_flutter.dart' as latlng;
+
+class GpxRouteMap extends StatefulWidget {
+  const GpxRouteMap({
+    Key? key,
+    this.width,
+    this.height,
+    required this.startLocation,
+  }) : super(key: key);
+
+  final double? width;
+  final double? height;
+  final LatLng startLocation;
+
+  @override
+  _GpxRouteMapState createState() => _GpxRouteMapState();
+}
+
+class _GpxRouteMapState extends State<GpxRouteMap> {
+  @override
+  void initState() {
+    print('hello world');
+  }
+
+  Widget build(BuildContext context) {
+    return latlng.GoogleMap(
+      mapType: MapType.normal, //hybrid, .normal, satellite, terrain,
+      //zoomGesturesEnabled: true,
+      //scrollGesturesEnabled: true,
+      //tiltGesturesEnabled: true,
+      //trafficEnabled: false,
+      //compassEnabled: true,
+      //rotateGesturesEnabled: true,
+      //myLocationEnabled: true,
+      //myLocationButtonEnabled: true,
+      zoomControlsEnabled: true,
+      initialCameraPosition: latlng.CameraPosition(
+        target: latlng.LatLng(52.584555, -1.331888),
+        /*latlng.LatLng(52.584555, -1.331888),*/
+        zoom: 11.5,
+        // tilt angle, in degrees, of the camera angle from the nadir
+        //tilt: 60.1,
+        // camera's bearing in degrees, measured clockwose fron north
+        //bearing: 190.55,
+      ),
+      //markers
+      markers: {
+        Marker(
+          markerId: latlng.MarkerId('start'),
+          position: latlng.LatLng(52.584555, -1.331888),
+          infoWindow:
+              latlng.InfoWindow(title: 'Start', snippet: 'text underneath'),
+        ),
+        Marker(
+          markerId: latlng.MarkerId('finish'),
+          position: latlng.LatLng(52.584343, -1.331765),
+          infoWindow: latlng.InfoWindow(title: 'Finish'),
+        ),
+      },
+      //start of polyline code
+      polylines: Set.from([
+        latlng.Polyline(
+          polylineId: latlng.PolylineId('polyline1'),
+          points: [
+            latlng.LatLng(52.584555, -1.331888),
+            latlng.LatLng(52.584219, -1.331918),
+            latlng.LatLng(52.583882, -1.332389),
+          ],
+          color: Colors.red,
+          width: 2,
+          //endCap: Cap.buttCap,
+          //visible: true,
+        ),
+      ]),
+    );
+  }
+}
