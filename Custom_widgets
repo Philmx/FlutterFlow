@@ -7,7 +7,7 @@ import '/custom_code/actions/index.dart'; // Imports custom actions
 import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 
-//imported to FlutterFlow 
+//imported to FlutterFlow - google_maps_flutter: ^2.2.3
 import 'package:google_maps_flutter/google_maps_flutter.dart' hide LatLng;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as latlng;
 
@@ -38,14 +38,10 @@ class _GpxRouteMapState extends State<GpxRouteMap> {
       zoomControlsEnabled: true,
       initialCameraPosition: latlng.CameraPosition(
         target: latlng.LatLng(52.584555, -1.331888),
-        /*latlng.LatLng(52.584555, -1.331888),*/
         zoom: 11.5,
-        // tilt angle, in degrees, of the camera angle from the nadir
-        //tilt: 60.1,
-        // camera's bearing in degrees, measured clockwose fron north
-        //bearing: 190.55,
       ),
-      //markers
+     
+     //markers
       markers: {
         Marker(
           markerId: latlng.MarkerId('start'),
@@ -59,10 +55,12 @@ class _GpxRouteMapState extends State<GpxRouteMap> {
           infoWindow: latlng.InfoWindow(title: 'Finish'),
         ),
       },
-      //start of polyline code
+    
+    //start of polyline code
       polylines: Set.from([
         latlng.Polyline(
           polylineId: latlng.PolylineId('polyline1'),
+          //hard coded latlong points
           points: [
             latlng.LatLng(52.584555, -1.331888),
             latlng.LatLng(52.584219, -1.331918),
@@ -70,8 +68,6 @@ class _GpxRouteMapState extends State<GpxRouteMap> {
           ],
           color: Colors.red,
           width: 2,
-          //endCap: Cap.buttCap,
-          //visible: true,
         ),
       ]),
     );
