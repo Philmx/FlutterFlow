@@ -45,7 +45,10 @@ class _GpxRouteMapState extends State<GpxRouteMap> {
       markers: {
         Marker(
           markerId: latlng.MarkerId('start'),
-          position: latlng.LatLng(52.584555, -1.331888),
+          position: latlng.LatLng(
+            widget.startLocation.latitude,
+            widget.startLocation.longitude,
+          ),
           infoWindow:
               latlng.InfoWindow(title: 'Start', snippet: 'text underneath'),
         ),
